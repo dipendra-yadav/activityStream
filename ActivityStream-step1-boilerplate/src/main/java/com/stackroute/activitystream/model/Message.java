@@ -1,5 +1,18 @@
 package com.stackroute.activitystream.model;
 
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
+
+import org.springframework.stereotype.Component;
+
 /*
  * The class "Message" will be acting as the data model for the message Table in the database. Please
  * note that this class is annotated with @Entity annotation. Hibernate will scan all package for 
@@ -7,7 +20,10 @@ package com.stackroute.activitystream.model;
  * process of looking through that particular Java object to recreate it as a table in your database.
  */
 
-
+//Model class
+@Component
+@Entity
+@Table(name = "Message")
 public class Message {
 
 	/*
@@ -19,30 +35,50 @@ public class Message {
 	 * system date
 	 */
 
-	public void setSenderName(String string) {
-		// TODO Auto-generated method stub
-		
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int messageId;
+
+	private String senderName;
+
+	@Version
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date tstamp;// java.util.Date;
+
+	private String message;
+
+	// getters +setters
+	public void setSenderName(String senderName) {
+		this.senderName = senderName;
+
 	}
 
-	public void setMessage(String string) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void setPostedDate() {
-		// TODO Auto-generated method stub
-		
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	public String getSenderName() {
-		// TODO Auto-generated method stub
-		return null;
+		return senderName;
 	}
 
 	public String getMessage() {
-		// TODO Auto-generated method stub
-		return null;
+		return message;
 	}
-	
+
+	public int getMessageId() {
+		return messageId;
+	}
+
+	public void setMessageId(int messageId) {
+		this.messageId = messageId;
+	}
+
+	public Date getTstamp() {
+		return tstamp;
+	}
+
+	public void setTstamp(Date tstamp) {
+		this.tstamp = tstamp;
+	}
 
 }

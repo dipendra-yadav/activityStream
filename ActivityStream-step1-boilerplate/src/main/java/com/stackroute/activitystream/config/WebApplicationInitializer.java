@@ -12,19 +12,23 @@ public class WebApplicationInitializer extends AbstractAnnotationConfigDispatche
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		// TODO Auto-generated method stub
-		return new Class[] {};
+		System.out.println("getRootConfigClasses initialized*********");
+
+		return new Class[] { ApplicationContextConfig.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		// TODO Auto-generated method stub
+		System.out.println("getServletConfigClasses initialized*********");
+
+		// return new Class[] {};
 		return null;
+
 	}
 
 	@Override
 	protected String[] getServletMappings() {
-		// TODO Auto-generated method stub
+
 		return new String[] { "/" };
 	}
 
